@@ -22,7 +22,7 @@ export default{
       .then((response)=>{
         console.log(response.data.data.slice(0,10));
         this.store.listCard = (response.data.data.slice(0,10));
-        console.log(this.store.listCard)
+        console.log('listCard',this.store.listCard)
       });
   },
 }

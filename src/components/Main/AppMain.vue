@@ -1,4 +1,5 @@
 <script>
+import { store } from '../../store.js';
 import SingleCard from './SingleCard.vue'
 export default {
   name: 'AppMain',
@@ -7,7 +8,7 @@ export default {
   },
   data() {
     return {
-
+      store,
     }
   }
 
@@ -40,11 +41,17 @@ export default {
 
             <div class="col">
 
-              <SingleCard />
+              <SingleCard 
+              :infoName="store.listCard[0].name"
+              
+              />
 
             </div>
+            <!-- :imgSrc="store.listCard[0][card_images[0]].image_url"
             
-
+            :infoType="store.listCard[0].type"
+              :infoArcheType="store.listCard[0].archetype"
+              :infoDesc="store.listCard[0].desc" -->
           </div>
         </div>
 

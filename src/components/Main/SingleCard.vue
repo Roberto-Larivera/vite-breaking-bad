@@ -5,6 +5,32 @@ export default {
     data() {
         return {
         }
+    },
+    props:{
+        imgSrc:{
+            type: String,
+            default:'https://via.placeholder.com/60X80',
+        },
+        imgSrcSmall:{
+            type: String,
+            default:'https://via.placeholder.com/60X80',
+        },
+        infoName:{
+            type: String,
+            default:'infoName Character',
+        },
+        infoType:{
+            type: String,
+            default:'infoType Character',
+        },
+        infoArcheType:{
+            type: String,
+            default:'infoArcheType Character',
+        },
+        infoDesc:{
+            type: String,
+            default:'infoDesc Character',
+        },
     }
 
 }
@@ -12,13 +38,19 @@ export default {
 
 <template>
     <div class="card">
-        <img src="https://via.placeholder.com/60X80" class="card-img-top w-100" alt="...">
+        <img :src="imgSrc" class="card-img-top w-100" :alt="infoName">
         <div class="card-body">
             <h3 class="card-title">
-                Titolo Card
+                {{infoName}}
             </h3>
             <p class="card-text">
-                Info Card
+                {{infoDesc}}
+            </p>
+            <p class="card-text">
+                {{infoType}}
+            </p>
+            <p class="card-text">
+                {{infoArcheType}}
             </p>
         </div>
     </div>
