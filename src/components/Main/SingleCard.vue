@@ -40,12 +40,12 @@ export default {
     <div class="card">
         <img :src="imgSrc" class="card-img-top w-100" :alt="infoName">
         <div class="card-body">
-            <h3 class="card-title">
+            <h4 class="card-title">
                 {{infoName}}
-            </h3>
-            <p class="card-text">
+            </h4>
+            <!-- <p class="card-text">
                 {{infoDesc}}
-            </p>
+            </p> -->
             <p class="card-text">
                 {{infoType}}
             </p>
@@ -57,5 +57,4 @@ export default {
 </template>
 
 <style lang="scss" scoped>
-
 </style>

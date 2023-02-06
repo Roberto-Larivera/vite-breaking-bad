@@ -3,14 +3,14 @@ import { store } from '../../store.js';
 import SingleCard from './SingleCard.vue'
 export default {
   name: 'AppMain',
-  components:{
+  components: {
     SingleCard,
   },
   data() {
     return {
       store,
     }
-  }
+  },
 
 }
 </script>
@@ -27,7 +27,7 @@ export default {
       </div>
 
       <!--section principal-->
-      <div class="row row-cols-1">
+      <div class="section_principal row row-cols-1 p-5">
         <div class="col">
 
           <div>
@@ -36,23 +36,19 @@ export default {
         </div>
         <div class="col">
 
-          <div class="row row-cols-5">
-            list card
-
+          <div class="list_cards row row-cols-1 row-cols-sm-1 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 g-5" v-if="store.listCard.length == 10">
+           <template v-for="element in store.listCard">
             <div class="col">
-
               <SingleCard 
-              :infoName="store.listCard[0].name"
-              
-              />
-
+                :imgSrc="element.card_images[0].image_url" 
+                :infoName="element.name"
+                :infoType="element.type"
+                :infoArcheType="element.archetype"
+                :infoDesc="element.desc" />
             </div>
-            <!-- :imgSrc="store.listCard[0][card_images[0]].image_url"
-            
-            :infoType="store.listCard[0].type"
-              :infoArcheType="store.listCard[0].archetype"
-              :infoDesc="store.listCard[0].desc" -->
+           </template>
           </div>
+
         </div>
 
       </div>
@@ -62,5 +58,13 @@ export default {
 </template>
 
 <style lang="scss" scoped>
-
+.section_principal {
+  background-color: whitesmoke;
+  min-height: 500px;
+  .list_cards{
+    .col{
+      min-height: 150px;
+    }
+  }
+}
 </style>

@@ -32,7 +32,7 @@ export default{
   <div>
     <AppHeader/>
     <AppMain/>
-    <AppFooter/>
+    <!-- <AppFooter/> -->
   </div>
 </template>
 
