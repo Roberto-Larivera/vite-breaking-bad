@@ -31,20 +31,23 @@ export default {
         <div class="col">
 
           <div>
-            found character
+            <h3>
+              Found {{ store.listCard.length }} character
+            </h3>
           </div>
         </div>
         <div class="col">
 
           <div class="list_cards row row-cols-1 row-cols-sm-1 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 g-5" v-if="store.listCard.length == 10">
            <template v-for="element in store.listCard">
-            <div class="col">
+            <div class="col d-flex align-items-stretch ">
               <SingleCard 
                 :imgSrc="element.card_images[0].image_url" 
                 :infoName="element.name"
                 :infoType="element.type"
                 :infoArcheType="element.archetype"
-                :infoDesc="element.desc" />
+                :infoDesc="element.desc"
+                />
             </div>
            </template>
           </div>
@@ -61,10 +64,5 @@ export default {
 .section_principal {
   background-color: whitesmoke;
   min-height: 500px;
-  .list_cards{
-    .col{
-      min-height: 150px;
-    }
-  }
 }
 </style>

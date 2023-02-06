@@ -37,24 +37,31 @@ export default {
 </script>
 
 <template>
-    <div class="card">
+    <div class="card ">
         <img :src="imgSrc" class="card-img-top w-100" :alt="infoName">
-        <div class="card-body">
-            <h4 class="card-title">
+        <div class="card-body d-flex flex-column">
+            <div class="h-50">
+                <h5 class="card-title">
                 {{infoName}}
-            </h4>
+            </h5>
+            </div>
             <!-- <p class="card-text">
                 {{infoDesc}}
             </p> -->
-            <p class="card-text">
+            <div class="h-50 d-flex flex-column justify-content-between">
+                <p class="card-text">
                 {{infoType}}
             </p>
             <p class="card-text">
                 {{infoArcheType}}
             </p>
+            </div>
         </div>
     </div>
 </template>
 
 <style lang="scss" scoped>
+h5{
+    text-transform: uppercase;
+}
 </style>
