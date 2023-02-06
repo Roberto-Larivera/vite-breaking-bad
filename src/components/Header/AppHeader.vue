@@ -15,11 +15,12 @@ export default {
     <div class="container">
       <div class="row">
         <div class="col d-flex">
-          <div>
-            <img src="https://via.placeholder.com/50" alt="">
+          <div class="logo-header d-flex align-items-center me-3">
+            <!-- <img src="https://via.placeholder.com/50" alt=""> -->
+            <img class="w-100" src="../../assets/logo.webp" alt="logo">
           </div>
           <div>
-            <h1>Yu-Gi-oh Api</h1>
+            <h1>Yu-Gi-oh!</h1>
           </div>
         </div>
       </div>
@@ -28,5 +29,10 @@ export default {
 </template>
 
 <style lang="scss" scoped>
-
+header{
+  background-color: $color_light-b;
+  .logo-header{
+  width: 100px;
+}
+}
 </style>

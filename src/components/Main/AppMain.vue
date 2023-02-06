@@ -2,11 +2,13 @@
 import { store } from '../../store.js';
 import SingleCard from './SingleCard.vue'
 import FoundCard from './FoundCard.vue'
+import SectionCard from './SectionCard.vue'
 export default {
   name: 'AppMain',
   components: {
     SingleCard,
     FoundCard,
+    SectionCard,
   },
   data() {
     return {
@@ -22,15 +24,15 @@ export default {
     <div class="container">
 
       <!--select category-->
-      <div class="row row">
-        <div class="col">
-          section category
+      <div class="row justify-content-center">
+        <div class="col-auto p-4">
+          <SectionCard />
         </div>
       </div>
 
       <!--section principal-->
       <div class="section_principal row row-cols-1 p-5">
-        <div class="principal-found col p-3 mb-3 text-center">
+        <div class="principal-found col p-3 mb-3 d-flex justify-content-center align-items-center">
           <FoundCard :myNumber="store.listCard.length"/>
         </div>
         <div class="col">
