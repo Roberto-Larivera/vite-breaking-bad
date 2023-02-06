@@ -40,7 +40,7 @@ export default{
 @import './style/main.scss';
 
 body{
-  background-color: #2E3A46;
+  background-color: $color_primary;
 }
 
 </style>

@@ -1,10 +1,12 @@
 <script>
 import { store } from '../../store.js';
 import SingleCard from './SingleCard.vue'
+import FoundCard from './FoundCard.vue'
 export default {
   name: 'AppMain',
   components: {
     SingleCard,
+    FoundCard,
   },
   data() {
     return {
@@ -28,17 +30,12 @@ export default {
 
       <!--section principal-->
       <div class="section_principal row row-cols-1 p-5">
-        <div class="col">
-
-          <div>
-            <h3>
-              Found {{ store.listCard.length }} character
-            </h3>
-          </div>
+        <div class="principal-found col p-3 mb-3 text-center">
+          <FoundCard :myNumber="store.listCard.length"/>
         </div>
         <div class="col">
 
-          <div class="list_cards row row-cols-1 row-cols-sm-1 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 g-5" v-if="store.listCard.length == 10">
+          <div class="list_cards row row-cols-1 row-cols-sm-1 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 g-3" v-if="store.listCard.length == 10">
            <template v-for="element in store.listCard">
             <div class="col d-flex align-items-stretch ">
               <SingleCard 
@@ -64,5 +61,10 @@ export default {
 .section_principal {
   background-color: whitesmoke;
   min-height: 500px;
+  .principal-found{
+    background-color: $color_primary;
+    border-radius: 20px;
+    color: whitesmoke;
+  }
 }
 </style>

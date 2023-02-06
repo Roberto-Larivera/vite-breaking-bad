@@ -6,30 +6,30 @@ export default {
         return {
         }
     },
-    props:{
-        imgSrc:{
+    props: {
+        imgSrc: {
             type: String,
-            default:'https://via.placeholder.com/60X80',
+            default: 'https://via.placeholder.com/60X80',
         },
-        imgSrcSmall:{
+        imgSrcSmall: {
             type: String,
-            default:'https://via.placeholder.com/60X80',
+            default: 'https://via.placeholder.com/60X80',
         },
-        infoName:{
+        infoName: {
             type: String,
-            default:'infoName Character',
+            default: 'infoName Character',
         },
-        infoType:{
+        infoType: {
             type: String,
-            default:'infoType Character',
+            default: 'infoType Character',
         },
-        infoArcheType:{
+        infoArcheType: {
             type: String,
-            default:'infoArcheType Character',
+            default: 'infoArcheType Character',
         },
-        infoDesc:{
+        infoDesc: {
             type: String,
-            default:'infoDesc Character',
+            default: 'infoDesc Character',
         },
     }
 
@@ -37,31 +37,34 @@ export default {
 </script>
 
 <template>
-    <div class="card ">
+    <div class="card p-2 text-center">
         <img :src="imgSrc" class="card-img-top w-100" :alt="infoName">
-        <div class="card-body d-flex flex-column">
-            <div class="h-50">
+        <div class="card-body d-flex flex-column justify-content-between">
                 <h5 class="card-title">
-                {{infoName}}
-            </h5>
-            </div>
+                    {{ infoName }}
+                </h5>
             <!-- <p class="card-text">
                 {{infoDesc}}
             </p> -->
-            <div class="h-50 d-flex flex-column justify-content-between">
                 <p class="card-text">
-                {{infoType}}
-            </p>
-            <p class="card-text">
-                {{infoArcheType}}
-            </p>
-            </div>
+                    {{ infoType }}
+                </p>
+                <p class="card-text">
+                    {{ infoArcheType }}
+                </p>
         </div>
     </div>
 </template>
 
 <style lang="scss" scoped>
-h5{
-    text-transform: uppercase;
+.card{
+    background-color: $color_primary;
+    h5 {
+        text-transform: uppercase;
+        color: white;
+    }
+    p{
+        color: $color_light-c;
+    }
 }
 </style>
