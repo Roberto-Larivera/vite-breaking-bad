@@ -23,11 +23,6 @@ export default {
           </div>
         </div>
       </div>
-      <div class="row">
-        <div class="col">
-          section category
-        </div>
-      </div>
     </div>
   </header>
 </template>
