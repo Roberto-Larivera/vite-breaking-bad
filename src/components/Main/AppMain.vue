@@ -1,4 +1,5 @@
 <script>
+import axios from 'axios';
 import { store } from '../../store.js';
 import SingleCard from './SingleCard.vue'
 import FoundCard from './FoundCard.vue'
@@ -15,6 +16,34 @@ export default {
       store,
     }
   },
+  methods: {
+    getCharacters() {
+      axios
+        .get('https://db.ygoprodeck.com/api/v7/cardinfo.php')
+        .then((response) => {
+          console.log(response.data.data.slice(0, 10));
+          this.store.listCard = (response.data.data.slice(0, 10));
+          console.log('listCard', this.store.listCard)
+        });
+    },
+    getArchetype() {
+      axios
+        .get('https://db.ygoprodeck.com/api/v7/archetypes.php?')
+        .then((response) => {
+          console.log(response.data);
+          this.store.listArchetype = (response.data);
+          console.log('listArchetype', this.store.listArchetype)
+        });
+    },
+
+  },
+  created() {
+    this.getCharacters()
+    this.getArchetype()
+  },
+  computed: {
+
+  }
 
 }
 </script>
@@ -33,22 +62,19 @@ export default {
       <!--section principal-->
       <div class="section_principal row row-cols-1 p-5">
         <div class="principal-found col p-3 mb-3 d-flex justify-content-center align-items-center">
-          <FoundCard :myNumber="store.listCard.length"/>
+          <FoundCard :myNumber="store.listCard.length" />
         </div>
         <div class="col">
 
-          <div class="list_cards row row-cols-1 row-cols-sm-1 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 g-3" v-if="store.listCard.length == 10">
-           <template v-for="element in store.listCard">
-            <div class="col d-flex align-items-stretch ">
-              <SingleCard 
-                :imgSrc="element.card_images[0].image_url" 
-                :infoName="element.name"
-                :infoType="element.type"
-                :infoArcheType="element.archetype"
-                :infoDesc="element.desc"
-                />
-            </div>
-           </template>
+          <div class="list_cards row row-cols-1 row-cols-sm-1 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 g-3"
+            v-if="store.listCard.length == 10">
+            <template v-for="element in store.listCard">
+              <div class="col d-flex align-items-stretch ">
+                <!-- :imgSrc="element.card_images[0].image_url"  -->
+                <SingleCard :infoName="element.name" :infoType="element.type" :infoArcheType="element.archetype"
+                  :infoDesc="element.desc" />
+              </div>
+            </template>
           </div>
 
         </div>
@@ -63,7 +89,8 @@ export default {
 .section_principal {
   background-color: whitesmoke;
   min-height: 500px;
-  .principal-found{
+
+  .principal-found {
     background-color: $color_primary;
     border-radius: 20px;
     color: whitesmoke;

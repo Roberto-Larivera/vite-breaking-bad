@@ -1,9 +1,11 @@
 <script>
+import { store } from '../../store.js';
+
 export default {
   name: 'SectionCard',
   data() {
     return {
-
+      store,
     }
   },
   // props:{
@@ -19,14 +21,17 @@ export default {
 <template>
   <div>
     <select class="form-select" aria-label="Default select example">
-      <option selected disabled>Open this select menu</option>
-      <option value="1">One</option>
-      <option value="2">Two</option>
-      <option value="3">Three</option>
+      <option selected disabled>Select by Archetype</option>
+      <option value="">None</option>
+      <option :value="element.archetype_name" v-for="element in store.listArchetype">{{element.archetype_name}}</option>
     </select>
   </div>
 </template>
 
 <style lang="scss" scoped>
-
+// .form-select{
+//   option{
+//     text-transform: uppercase;
+//   }
+// }
 </style>

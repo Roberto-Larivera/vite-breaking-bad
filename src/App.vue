@@ -1,5 +1,4 @@
 <script>
-import axios from 'axios';
 import { store } from './store.js';
 import AppHeader from './components/Header/AppHeader.vue';
 import AppMain from './components/Main/AppMain.vue';
@@ -16,15 +15,7 @@ export default{
       store,
     }
   },
-  created() {
-    axios
-      .get('https://db.ygoprodeck.com/api/v7/cardinfo.php')
-      .then((response)=>{
-        console.log(response.data.data.slice(0,10));
-        this.store.listCard = (response.data.data.slice(0,10));
-        console.log('listCard',this.store.listCard)
-      });
-  },
+  
 }
 </script>
 
