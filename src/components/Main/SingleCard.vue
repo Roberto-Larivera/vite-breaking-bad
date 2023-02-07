@@ -37,7 +37,7 @@ export default {
 </script>
 
 <template>
-    <div class="card p-2 text-center">
+    <div class="card p-2 text-center w-100">
         <img :src="imgSrc" class="card-img-top w-100" :alt="infoName">
         <div class="card-body d-flex flex-column justify-content-between">
                 <h5 class="card-title">
