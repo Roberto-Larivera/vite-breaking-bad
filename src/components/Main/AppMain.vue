@@ -18,13 +18,19 @@ export default {
   },
   methods: {
     getCharacters() {
+      this.store.loadingTime = true
+      console.log(this.store.loadingTime)
       axios
         .get('https://db.ygoprodeck.com/api/v7/cardinfo.php')
         .then((response) => {
           console.log(response.data.data.slice(0, 10));
           this.store.listCard = (response.data.data.slice(0, 10));
           console.log('listCard', this.store.listCard)
+          this.store.loadingTime = false
         });
+
+      console.log(this.store.loadingTime)
+
     },
     getArchetype() {
       axios
@@ -65,9 +71,12 @@ export default {
           <FoundCard :myNumber="store.listCard.length" />
         </div>
         <div class="col">
-
-          <div class="list_cards row row-cols-1 row-cols-sm-1 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 g-3"
-            v-if="store.listCard.length == 10">
+          <div v-if="store.loadingTime" class="d-flex justify-content-center align-items-center h-100">
+            <div class="spinner-grow text-warning" style="width: 5rem; height: 5rem;" role="status">
+              <span class="visually-hidden">Loading...</span>
+            </div>
+          </div>
+          <div class="list_cards row row-cols-1 row-cols-sm-1 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 g-3" v-else> <!-- v-if="store.listCard.length == 10"-->
             <template v-for="element in store.listCard">
               <div class="col d-flex align-items-stretch ">
                 <!-- :imgSrc="element.card_images[0].image_url"  -->

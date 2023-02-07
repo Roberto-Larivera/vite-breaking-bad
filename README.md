@@ -30,4 +30,4 @@ Recuperare tramite chiamata API tutti gli archetype richiamando l'endpoint https
 Implementare la logica di filtraggio dei risultati delle carte: al cambio del valore della select, effettuare una nuova chiamata API per ottenere una nuova lista di carte
 
 ## Bonus:
-- Creare un componente loader da visualizzare fintantoché i risultati non sono pronti.
+- Creare un componente che mostri il numero totale di risultati ottenuti.
