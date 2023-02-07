@@ -139,13 +139,13 @@ export default {
 
 <style lang="scss" scoped>
 .section_principal {
-  background-color: whitesmoke;
+  background-color: $color_light-b;
   min-height: 500px;
 
   .principal-found {
     background-color: $color_primary;
     border-radius: 20px;
-    color: whitesmoke;
+    color: $color_light-b;
     .loading-spinner{
       right: 20%;
     }

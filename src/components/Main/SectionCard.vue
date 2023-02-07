@@ -22,9 +22,8 @@ export default {
 </template>
 
 <style lang="scss" scoped>
-// .form-select{
-//   option{
-//     text-transform: uppercase;
-//   }
-// }
+select{
+  background-color: $color_light-b;
+  color:$color_dark ;
+}
 </style>

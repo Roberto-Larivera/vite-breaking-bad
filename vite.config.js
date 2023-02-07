@@ -9,8 +9,6 @@ export default defineConfig({
       scss: { 
          additionalData: `
          @import "./src/style/partials/variables.scss";
-         @import "./src/style/partials/mixin.scss";
-         
          ` 
      },
     },

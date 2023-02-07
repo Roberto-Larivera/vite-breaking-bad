@@ -19,10 +19,13 @@ export default {
 <template>
   <div>
     <h3>
-      Found <span class="text-warning">{{ myNumber }}</span> character
+      Found <span>{{ myNumber }}</span> character
     </h3>
   </div>
 </template>
 
 <style lang="scss" scoped>
+span{
+  color: $color_b;
+}
 </style>

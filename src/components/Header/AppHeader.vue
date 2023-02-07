@@ -16,7 +16,6 @@ export default {
       <div class="row">
         <div class="col d-flex">
           <div class="logo-header d-flex align-items-center me-3">
-            <!-- <img src="https://via.placeholder.com/50" alt=""> -->
             <img class="w-100" src="../../assets/logo.webp" alt="logo">
           </div>
           <div>
@@ -31,6 +30,9 @@ export default {
 <style lang="scss" scoped>
 header{
   background-color: $color_light-b;
+  h1{
+    color:$color_dark;
+  }
   .logo-header{
   width: 100px;
 }

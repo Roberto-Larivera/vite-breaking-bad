@@ -40,7 +40,7 @@ export default {
     <div class="card p-2 text-center w-100">
         <img :src="imgSrc" class="card-img-top w-100" :alt="infoName">
         <div class="card-body d-flex flex-column justify-content-between">
-                <h5 class="card-title">
+                <h5 class="card-title text-uppercase">
                     {{ infoName }}
                 </h5>
             <!-- <p class="card-text">
@@ -60,8 +60,7 @@ export default {
 .card{
     background-color: $color_primary;
     h5 {
-        text-transform: uppercase;
-        color: white;
+        color: $color_light;
     }
     p{
         color: $color_light-c;
