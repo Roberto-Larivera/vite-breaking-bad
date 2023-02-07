@@ -17,28 +17,63 @@ export default {
     }
   },
   methods: {
+    // LIST REQUEST CARD
     getCharacters() {
       this.store.loadingTime = true
-      console.log(this.store.loadingTime)
+      //console.log(this.store.loadingTime)
       axios
         .get('https://db.ygoprodeck.com/api/v7/cardinfo.php')
         .then((response) => {
-          console.log(response.data.data.slice(0, 10));
+          //console.log(response.data.data.slice(0, 10));
           this.store.listCard = (response.data.data.slice(0, 10));
-          console.log('listCard', this.store.listCard)
+          //console.log('listCard', this.store.listCard)
+          this.store.loadingTime = false
+        })
+        .catch((error)=>{
+          console.log('error',error)
+          this.store.listCard = []
           this.store.loadingTime = false
         });
 
-      console.log(this.store.loadingTime)
+      //console.log(this.store.loadingTime)
 
     },
+
+    // LIST REQUEST FILTRATA
+    getFilterCharacters() {
+      this.store.loadingTime = true
+      //console.log(this.store.loadingTime)
+      axios
+        .get('https://db.ygoprodeck.com/api/v7/cardinfo.php',{
+          params:{
+            archetype: store.selectValue
+          }
+        })
+        .then((response) => {
+          //console.log(response.data.data.slice(0, 10));
+          this.store.listCard = (response.data.data.slice(0, 10));
+          //console.log('listCard', this.store.listCard)
+          this.store.loadingTime = false
+        })
+        .catch((error)=>{
+          console.log('error',error)
+          this.store.listCard = []
+          this.store.loadingTime = false
+          this.getCharacters()
+        });
+
+      //console.log(this.store.loadingTime)
+
+    },
+
+    // LIST REQUEST ARCHETYPE
     getArchetype() {
       axios
         .get('https://db.ygoprodeck.com/api/v7/archetypes.php?')
         .then((response) => {
-          console.log(response.data);
+          //console.log(response.data);
           this.store.listArchetype = (response.data);
-          console.log('listArchetype', this.store.listArchetype)
+          //console.log('listArchetype', this.store.listArchetype)
         });
     },
 
@@ -61,7 +96,7 @@ export default {
       <!--select category-->
       <div class="row justify-content-center">
         <div class="col-auto p-4">
-          <SectionCard />
+          <SectionCard @search="getFilterCharacters()" />
         </div>
       </div>
 
@@ -97,7 +132,6 @@ export default {
 <style lang="scss" scoped>
 .section_principal {
   background-color: whitesmoke;
-  min-height: 500px;
 
   .principal-found {
     background-color: $color_primary;

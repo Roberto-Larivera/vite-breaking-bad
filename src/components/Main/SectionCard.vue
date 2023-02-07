@@ -8,21 +8,14 @@ export default {
       store,
     }
   },
-  // props:{
-  //   myNumber:{
-  //     type: Number,
-  //     default: 0
-  //   }
-  // }
 
 }
 </script>
 
-<template>
+<template> 
   <div>
-    <select class="form-select" aria-label="Default select example">
-      <option selected disabled>Select by Archetype</option>
-      <option value="">None</option>
+    <select class="form-select" aria-label="Default select example" v-model="store.selectValue" @change="$emit('search')">
+      <option selected value="">Select by Archetype</option>
       <option :value="element.archetype_name" v-for="element in store.listArchetype">{{element.archetype_name}}</option>
     </select>
   </div>
