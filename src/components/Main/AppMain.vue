@@ -98,22 +98,23 @@ export default {
 
 
 
-          <div class="list_cards row row-cols-1 row-cols-sm-1 row-cols-md-3 row-cols-lg-4 row-cols-xl-5  g-3" :class="(store.loadingTime)?'align-items-center':''"> 
+          <div class="list_cards row row-cols-1 row-cols-sm-1 row-cols-md-3 row-cols-lg-4 row-cols-xl-5  g-3 position-relative"  :class="(store.loadingTime)?'align-items-center':''"> 
             <template v-if="store.loadingTime">
+              <div class="h-100" v-for="n in 10">
+                <LoadingPlaceholder />
+              </div>
+              <!-- <div class="h-100">
+                <LoadingPlaceholder />
+              </div>
+              
               <div class="h-100">
                 <LoadingPlaceholder />
               </div>
               <div class="h-100">
                 <LoadingPlaceholder />
-              </div>
+              </div> -->
               <div class="h-100">
-                <LoadingSpinner />
-              </div>
-              <div class="h-100">
-                <LoadingPlaceholder />
-              </div>
-              <div class="h-100">
-                <LoadingPlaceholder />
+                <LoadingSpinner class="position-absolute top-50 start-50 translate-middle"/>
               </div>
             </template>
 

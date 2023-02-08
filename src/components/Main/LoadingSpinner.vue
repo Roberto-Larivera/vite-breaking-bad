@@ -20,6 +20,6 @@ export default {
 
 <style lang="scss" scoped>
 .spinner-grow{
-  color: $color_primary;
+  color: $color_b;
 }
 </style>
