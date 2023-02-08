@@ -23,25 +23,23 @@ export default {
   methods: {
 
     // LIST REQUEST CARD
-    getCharacters() {
-      this.store.loadingTime = true
-      axios
-        .get('https://db.ygoprodeck.com/api/v7/cardinfo.php')
-        .then((response) => {
-          this.store.listCard = (response.data.data.slice(0, 30));
-          this.store.loadingTime = false
-        });
+    // getCharacters() {
+    //   this.store.loadingTime = true
+    //   axios
+    //     .get('https://db.ygoprodeck.com/api/v7/cardinfo.php')
+    //     .then((response) => {
+    //       this.store.listCard = (response.data.data.slice(0, 30));
+    //       this.store.loadingTime = false
+    //     });
 
-    },
+    // },
 
     // LIST REQUEST FILTRATA
     getFilterCharacters() {
       this.store.loadingTime = true
       axios
         .get('https://db.ygoprodeck.com/api/v7/cardinfo.php', {
-          params: {
-            archetype: store.selectValue
-          }
+          params: this.store.selectValue == '' ? {} : { archetype: store.selectValue }
         })
         .then((response) => {
           this.store.listCard = (response.data.data.slice(0, 30));
@@ -51,7 +49,7 @@ export default {
           console.log('error', error)
           this.store.loadingTime = false
           this.store.listCard = []
-          this.getCharacters()
+          //this.getCharacters()
         });
 
     },
@@ -68,7 +66,8 @@ export default {
 
   },
   created() {
-    this.getCharacters()
+    this.getFilterCharacters()
+    //this.getCharacters()
     this.getArchetype()
   },
   computed: {
@@ -92,13 +91,15 @@ export default {
       <!--section principal-->
       <div class="section_principal row row-cols-1 p-5">
         <div class="principal-found col p-3 mb-3 d-flex justify-content-center align-items-center">
-          <FoundCard :myNumber="store.listCard.length" class=""/>
+          <FoundCard :myNumber="store.listCard.length" class="" />
         </div>
         <div class="col">
 
 
 
-          <div class="list_cards row row-cols-1 row-cols-sm-1 row-cols-md-3 row-cols-lg-4 row-cols-xl-5  g-3 position-relative"  :class="(store.loadingTime)?'align-items-center':''"> 
+          <div
+            class="list_cards row row-cols-1 row-cols-sm-1 row-cols-md-3 row-cols-lg-4 row-cols-xl-5  g-3 position-relative"
+            :class="(store.loadingTime) ? 'align-items-center' : ''">
             <template v-if="store.loadingTime">
               <div class="h-100" v-for="n in 10">
                 <LoadingPlaceholder />
@@ -114,20 +115,20 @@ export default {
                 <LoadingPlaceholder />
               </div> -->
               <div class="h-100">
-                <LoadingSpinner class="position-absolute top-50 start-50 translate-middle"/>
+                <LoadingSpinner class="position-absolute top-50 start-50 translate-middle" />
               </div>
             </template>
 
 
-           
 
-              <template v-for="element in store.listCard" v-else>
-                <div class="col d-flex align-items-stretch ">
-                  <!-- :imgSrc="element.card_images[0].image_url"  -->
-                  <SingleCard :infoName="element.name" :infoType="element.type" :infoArcheType="element.archetype"
-                    :infoDesc="element.desc" :imgSrc="element.card_images[0].image_url"/>
-                </div>
-              </template>
+
+            <template v-for="element in store.listCard" v-else>
+              <div class="col d-flex align-items-stretch ">
+                <!-- :imgSrc="element.card_images[0].image_url"  -->
+                <SingleCard :infoName="element.name" :infoType="element.type" :infoArcheType="element.archetype"
+                  :infoDesc="element.desc" :imgSrc="element.card_images[0].image_url" />
+              </div>
+            </template>
           </div>
 
         </div>
@@ -147,7 +148,8 @@ export default {
     background-color: $color_primary;
     border-radius: 20px;
     color: $color_light-b;
-    .loading-spinner{
+
+    .loading-spinner {
       right: 20%;
     }
   }
